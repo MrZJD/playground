@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-Skeleton</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+    <script src="./xgSkeleton.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 普通布局元素 -->
+        <div>
+            <h1>Vue Directive Skeleton Sample</h1>
+            <h2>1. Normal Layout 普通布局元素</h2>
+            <div class="layout-a" v-skt :skt-state="layoutASkeletonState">
+                <div class="header">
+                    <div class="avatar" need-skt>
+                        <img :src="layoutA.avatar" alt="avatar">
+                    </div>
+                    <div class="info">
+                        <div class="name" need-skt>{{ layoutA.name }}</div>
+                        <div class="desc" need-skt>{{ layoutA.desc }}</div>
+                    </div>
+                </div>
+                <div class="content">
+                    <p need-skt>{{ layoutA.content }}</p>
+                    <p need-skt>{{ layoutA.content }}</p>
+                    <p need-skt>{{ layoutA.content }}</p>
+                </div>
+            </div>
+            <button class="btn-change" @click="loadingA">点击开始加载 3s后完成</button>
+        </div>
+        <!-- 列表元素 -->
+        <div>
+            <h2>2. List Layout 列表元素</h2>
+            <button class="btn-change" @click="loadingList">点击开始加载 3s后完成</button>
+            <ul class="ranks" :skt-state="list.skeletonState" skt-list="4" v-skt>
+                <li class="ranks-i" v-for="(item, index) in list.data" :key="index">
+                    <div class="avatar">
+                        <div class="pic" need-skt>
+                            <img :src="item.headPic" :alt="item.nickname">
+                            <!-- <span class="live">LIVE</span> -->
+                            <span class="vip" v-show="item.vipLevel"></span>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="desc" need-skt>
+                            <span class="uname">{{ item.nickname }}</span>
+                            <span class="level">LV.{{ item.level }}</span>
+                        </div>
+                        <div class="details" need-skt>
+                            <span class="label">TOP-UP:</span>
+                            <span class="total">{{ item.money }}<i>USD</i></span>
+                        </div>
+                    </div>
+                    <div class="btn-follow" need-skt></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                layoutA: {
+                    avatar: '',
+                    name: '',
+                    desc: '',
+                    content: ''
+                },
+                layoutASkeletonState: false,
+                list: {
+                    skeletonState: false,
+                    data: [{}]
+                }
+            },
+            methods: {
+                loadingA () {
+                    this.layoutASkeletonState = true
+                    setTimeout(() => {
+                        this.layoutASkeletonState = false
+                        this.layoutA = {
+                            avatar: 'https://avatars3.githubusercontent.com/u/12510335?s=460&v=4',
+                            name: 'mrzjd',
+                            desc: 'i am mrzjd',
+                            content: 'it is content'
+                        }
+                    }, 3000)
+                },
+                loadingList () {
+                    this.list.skeletonState = true
+                    setTimeout(() => {
+                        this.list.skeletonState = false
+                        this.list.data = [{
+                            'uid'      : 123,
+                            'nickname' : 'ruby',
+                            'headPic'  : 'https://avatars3.githubusercontent.com/u/12510335?s=460&v=4',  
+                            'level'    : 1,
+                            'rank'     : 10,
+                            'money'    : 69.99,
+                            'vipLevel' : 1,
+                            'isFollow' : 1
+                        }, {
+                            'uid'      : 123,
+                            'nickname' : 'ruby',
+                            'headPic'  : 'https://avatars3.githubusercontent.com/u/12510335?s=460&v=4',  
+                            'level'    : 1,
+                            'rank'     : 10,
+                            'money'    : 69.99,
+                            'vipLevel' : 1,
+                            'isFollow' : 1
+                        }]
+                    }, 3000)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
