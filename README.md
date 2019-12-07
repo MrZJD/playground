@@ -4,4 +4,5 @@
 
 - [skeleton - 骨架屏方案](./skeleton)
 - [graphql](./graphql)
-- [encrypt常用加密算法]('./encrypt)
+- [encrypt常用加密算法](./encrypt)
+- [astjs](./astjs)
