@@ -20,7 +20,7 @@
   "dependencies": {
     "@koa/cors": "^2.2.3",
     "apollo-boost": "^0.1.27",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
     "koa": "^2.6.2",
