@@ -9,3 +9,5 @@
 - [encrypt常用加密算法](./encrypt)
 - [astjs](./astjs)
 - [tiny compiler 一个简单的编译器](./tiny-compiler/index.js)
+- [sql](./node-db) **没处理完**
+- [netspider - 简单通用页面爬虫](./netspider)
